@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Mascot from '@/components/Mascot';
+// import Mascot from '@/components/Mascot';
 import { Cardswithdetails } from '@/components/Cards';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { AccordionDemo } from './Accordian';
@@ -49,7 +49,7 @@ export default function Landingpage() {
         {/* Center Content */}
         <div className="flex flex-col items-center text-center space-y-6">
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-gray-100 to-gray-400 flex items-center gap-3">
-            <Mascot />
+            {/* <Mascot /> */}
             YapHouse
           </h1>
           <p className="text-lg sm:text-xl text-gray-300">
