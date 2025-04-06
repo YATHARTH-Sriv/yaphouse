@@ -7,31 +7,9 @@ import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { AccordionDemo } from './Accordian';
 import { SocialBubbleLeft, SocialBubbleRight } from './Socialbubble';
 import Link from 'next/link';
-import { FaTwitter, FaGithub, FaWallet } from 'react-icons/fa';
-import { RiUserCommunityLine } from "react-icons/ri";
-import { SiSolana } from "react-icons/si";
+import { FaTwitter, FaGithub} from 'react-icons/fa';
 import  InfoSection  from './Infosection';
 
-const cardDetailsone = [
-  {
-    id: 1,
-    logo: <SiSolana className="text-4xl text-yellow-400" />,
-    heading: "Built on Solana",
-    detail: "We are on Solana  fast transactions and low fees."
-  },
-  {
-    id: 2,
-    logo: <FaWallet className="text-4xl text-yellow-400" />,
-    heading: "Earn through Yapping",
-    detail: "Whats the point of yapping if you're not getting paid?"
-  },
-  {
-    id: 3,
-    logo: <RiUserCommunityLine className="text-4xl text-yellow-400" />,
-    heading: "Community Building",
-    detail: "Creators can build strong relationships with fans and earn via NFTs."
-  }
-];
 
 const socials = [
   {
@@ -88,7 +66,7 @@ export default function Landingpage() {
 
       {/* Cards */}
       <div className="w-full mt-40 px-6">
-        <Cardswithdetails cardDetails={cardDetailsone} />
+        <Cardswithdetails />
       </div>
 
       {/* Info Section */}
