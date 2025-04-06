@@ -17,7 +17,7 @@ import {
         <AccordionItem value="item-4">
           <AccordionTrigger className="  text-lg font-medium">How YapHouse makes money</AccordionTrigger>
           <AccordionContent className=" text-md font-light">
-            YapHouse earns through gas fees NFT's and subscription models
+            YapHouse earns through gas fees NFTs and subscription models
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-5">

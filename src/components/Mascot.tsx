@@ -1,16 +1,12 @@
 'use client';
 
 import { Player } from '@lottiefiles/react-lottie-player';
-import { useState } from 'react';
 
 export default function Mascot() {
-  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
       className=" w-28 h-30 cursor-pointer"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
 
 

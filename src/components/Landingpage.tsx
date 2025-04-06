@@ -17,13 +17,13 @@ const cardDetailsone = [
     id: 1,
     logo: <SiSolana className="text-4xl text-yellow-400" />,
     heading: "Built on Solana",
-    detail: "We are on Solana – fast transactions and low fees."
+    detail: "We are on Solana  fast transactions and low fees."
   },
   {
     id: 2,
     logo: <FaWallet className="text-4xl text-yellow-400" />,
     heading: "Earn through Yapping",
-    detail: "What’s the point of yapping if you're not getting paid?"
+    detail: "Whats the point of yapping if you're not getting paid?"
   },
   {
     id: 3,
@@ -75,7 +75,7 @@ export default function Landingpage() {
             YapHouse
           </h1>
           <p className="text-lg sm:text-xl text-gray-300">
-            Do You Yap A Lot? Well, It's Time To Get Paid For It!
+            Do You Yap A Lot? Well, Its Time To Get Paid For It!
           </p>
           <WalletMultiButton className="!bg-yellow-400 hover:!bg-yellow-500 !text-black !font-semibold !text-lg !py-3 !px-10 !rounded-lg !transition-all !duration-300 shadow-lg" />
         </div>

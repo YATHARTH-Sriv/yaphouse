@@ -13,7 +13,7 @@ function InfoSection(){
             What is YapHouse
           </h2>
           <p className="text-lg text-gray-300 text-center">
-            People spend hours listening to podcasts and Twitter spaces but don't get compensated for this time.
+            People spend hours listening to podcasts and Twitter spaces but dont get compensated for this time.
           </p>
 
           {/* Decorative Arrows */}
