@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# YapHouse ( A Decentralised Social App)
 
-## Getting Started
+### Do You Listen To Podcasts Twitter spaces or consume content on Social Media Apps well its time to get compensated for your TIME.
 
-First, run the development server:
+##
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![alt text](public/details.png)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+##
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+#### It's High Time Platforms stop being the profitable side in this transaction creators create content users spend time on them creating engagement but creators recieve a percentage of revenue and do not connect with the audience in a more authentic way and Users well you know they get nothing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+##
 
-## Deploy on Vercel
+     Repo Link For The Contract: https://github.com/YATHARTH-Sriv/yaphouse-contract
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+##
+#### YapHouse solves this with not only helping users and creators to earn more and also create a good connection between audience and creators.
+
+##
+
+Currently We Are On Testnet phase
+
