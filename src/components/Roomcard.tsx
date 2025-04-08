@@ -36,6 +36,8 @@ export function RoomCard({
         <div className="aspect-video w-full overflow-hidden">
           <Image
             src={thumbnailUrl || "/placeholder.svg?height=200&width=350"} 
+            height={200}
+            width={350}
             alt={title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />

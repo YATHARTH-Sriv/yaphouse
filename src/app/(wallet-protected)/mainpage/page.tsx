@@ -91,7 +91,9 @@ export default function NFTMarketPage() {
             <div className="aspect-[21/9] w-full">
               <Image
                 // src="/placeholder.svg?height=400&width=900"
-                src='./mock-data/learneth.png' 
+                src='/mock-data/learneth.png' 
+                height="400"
+                width="900"
                 alt="Featured Room"
                 className="w-full h-full object-cover"
               />
