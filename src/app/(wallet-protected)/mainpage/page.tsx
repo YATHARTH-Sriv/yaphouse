@@ -7,10 +7,11 @@ import { motion } from 'framer-motion';
 import { FaSearch, FaFire, FaRegClock, FaStar } from 'react-icons/fa';
 import { AnimatedBackground } from '@/components/Animated-background';
 import { AudioRoomGrid } from '@/components/Audioroom';
+import Image from 'next/image';
 
 export default function NFTMarketPage() {
   const { wallet } = useWallet();
-  const walletAddress = wallet?.adapter.publicKey?.toBase58();
+  // const walletAddress = wallet?.adapter.publicKey?.toBase58();
   const [activeTab, setActiveTab] = React.useState('trending');
   
   const tabs = [
@@ -88,7 +89,7 @@ export default function NFTMarketPage() {
           <h2 className="text-2xl font-bold mb-4">Featured Room</h2>
           <div className="relative rounded-xl overflow-hidden">
             <div className="aspect-[21/9] w-full">
-              <img 
+              <Image
                 // src="/placeholder.svg?height=400&width=900"
                 src='./mock-data/learneth.png' 
                 alt="Featured Room"

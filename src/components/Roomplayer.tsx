@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute, FaTimes } from 'react-icons/fa';
 import { Comments } from './Comments';
+import Image from 'next/image';
 
 interface RoomPlayerProps {
   id: string;
@@ -62,7 +63,7 @@ export function RoomPlayer({
         <div className="lg:col-span-2 bg-gradient-to-br from-gray-800/90 to-gray-900/90 rounded-xl overflow-hidden border border-white/10 shadow-lg">
           <div className="relative">
             <div className="aspect-video w-full overflow-hidden">
-              <img 
+              <Image
                 src={thumbnailUrl || "/placeholder.svg?height=400&width=800"} 
                 alt={title}
                 className="w-full h-full object-cover"

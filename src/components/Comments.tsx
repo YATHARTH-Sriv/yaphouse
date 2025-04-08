@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaPaperPlane } from 'react-icons/fa';
+import Image from 'next/image';
 
 interface Comment {
   id: string;
@@ -86,7 +87,7 @@ export function Comments({ roomId }: CommentsProps) {
               className="flex gap-3"
             >
               <div className="flex-shrink-0">
-                <img 
+                <Image
                   src={comment.avatar} 
                   alt={comment.user} 
                   className="w-8 h-8 rounded-full"

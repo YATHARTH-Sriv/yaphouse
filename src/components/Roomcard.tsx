@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaUserFriends, FaPlay } from 'react-icons/fa';
+import Image from 'next/image';
 
 interface RoomCardProps {
   id: string;
@@ -33,7 +34,7 @@ export function RoomCard({
     >
       <div className="relative">
         <div className="aspect-video w-full overflow-hidden">
-          <img 
+          <Image
             src={thumbnailUrl || "/placeholder.svg?height=200&width=350"} 
             alt={title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
