@@ -19,7 +19,6 @@ export const metadata: Metadata = {
   description: "Earn through yapping",
 };
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,10 +29,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-       <SolanaProvider>
-           {children}
+        <SolanaProvider>
+          {children}
         </SolanaProvider>
-      </body> 
+      </body>
     </html>
   );
 }

@@ -1,15 +1,16 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 // import Mascot from '@/components/Mascot';
 import { Cardswithdetails } from '@/components/Cards';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { AccordionDemo } from './Accordian';
 import { SocialBubbleLeft, SocialBubbleRight } from './Socialbubble';
 import Link from 'next/link';
-import { FaTwitter, FaGithub} from 'react-icons/fa';
-import  InfoSection  from './Infosection';
-
+import { FaTwitter, FaGithub } from 'react-icons/fa';
+import InfoSection from './Infosection';
+import { useConnection, useWallet } from '@solana/wallet-adapter-react';
+import { useRouter } from 'next/navigation';
 
 const socials = [
   {
@@ -25,6 +26,19 @@ const socials = [
 ];
 
 export default function Landingpage() {
+  const { wallet } = useWallet();
+  const route = useRouter();
+  
+  useEffect(() => {
+    const getadd = async () => {
+      const publicadd = await wallet?.adapter.publicKey?.toBase58();
+      if (publicadd) {
+        route.push("/mainpage");
+      }
+    };
+    getadd();
+  }, [wallet?.adapter.publicKey, route]);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white flex flex-col items-center justify-start relative overflow-hidden pb-24">
 
