@@ -17,7 +17,7 @@ interface CommentsProps {
   roomId: string;
 }
 
-// Mock data for comments
+
 const mockComments: Comment[] = [
   {
     id: '1',
@@ -88,6 +88,8 @@ export function Comments({ roomId }: CommentsProps) {
             >
               <div className="flex-shrink-0">
                 <Image
+                  width={40}
+                  height={40}
                   src={comment.avatar} 
                   alt={comment.user} 
                   className="w-8 h-8 rounded-full"

@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute, FaTimes } from 'react-icons/fa';
-import { Comments } from './Comments';
+// import { Comments } from '../Comments';
 import Image from 'next/image';
+import { Comments } from '../comment/Comments';
 
 interface RoomPlayerProps {
   id: string;
@@ -12,6 +13,7 @@ interface RoomPlayerProps {
   creator: string;
   listeners: number;
   thumbnailUrl: string;
+  audioUrl?: string; // Make this optional to support both mock data and real podcasts
   onClose: () => void;
 }
 
@@ -21,32 +23,96 @@ export function RoomPlayer({
   creator, 
   listeners, 
   thumbnailUrl, 
+  audioUrl,
   onClose 
 }: RoomPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
   
-  // Simulate progress updates
-  React.useEffect(() => {
-    if (!isPlaying) return;
-    
-    const interval = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) {
-          setIsPlaying(false);
-          return 0;
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  
+  // Initialize audio element
+  useEffect(() => {
+    if (audioUrl) {
+      audioRef.current = new Audio(audioUrl);
+      
+      // Set up event listeners
+      audioRef.current.addEventListener('loadedmetadata', () => {
+        if (audioRef.current) {
+          setDuration(audioRef.current.duration);
         }
-        return prev + 0.5;
       });
-    }, 1000);
+      
+      audioRef.current.addEventListener('timeupdate', () => {
+        if (audioRef.current) {
+          setCurrentTime(audioRef.current.currentTime);
+          setProgress((audioRef.current.currentTime / audioRef.current.duration) * 100);
+        }
+      });
+      
+      audioRef.current.addEventListener('ended', () => {
+        setIsPlaying(false);
+      });
+      
+      // Clean up on unmount
+      return () => {
+        if (audioRef.current) {
+          audioRef.current.pause();
+          audioRef.current.src = '';
+          audioRef.current.remove();
+        }
+      };
+    } else {
+      // For mock data without actual audio, use the progress simulation
+      if (!isPlaying) return;
+      
+      const interval = setInterval(() => {
+        setProgress(prev => {
+          if (prev >= 100) {
+            setIsPlaying(false);
+            return 0;
+          }
+          return prev + 0.5;
+        });
+      }, 1000);
+      
+      return () => clearInterval(interval);
+    }
+  }, [audioUrl, isPlaying]);
+  
+  // Handle play/pause
+  useEffect(() => {
+    if (!audioRef.current) return;
     
-    return () => clearInterval(interval);
+    if (isPlaying) {
+      audioRef.current.play().catch(err => {
+        console.error("Error playing audio:", err);
+        setIsPlaying(false);
+      });
+    } else {
+      audioRef.current.pause();
+    }
   }, [isPlaying]);
+  
+  // Handle mute/unmute
+  useEffect(() => {
+    if (!audioRef.current) return;
+    audioRef.current.muted = isMuted;
+  }, [isMuted]);
+  
+  // Format time in MM:SS
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
   
   return (
     <motion.div
-      layoutId={`room-card-${id}`}
+      layoutId={`podcast-card-${id}`}
       className="fixed inset-0 z-50 flex items-center justify-center"
       onClick={(e) => e.stopPropagation()}
     >
@@ -66,6 +132,8 @@ export function RoomPlayer({
               <Image
                 src={thumbnailUrl || "/placeholder.svg?height=400&width=800"} 
                 alt={title}
+                height={400}
+                width={800}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -96,12 +164,24 @@ export function RoomPlayer({
                       {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
                     </motion.button>
                     
-                    <div className="text-sm text-gray-300">
-                      {Math.floor(progress / 100 * 60)}:{String(Math.floor((progress / 100 * 60) % 60)).padStart(2, '0')}
+                    <div className="text-sm text-white">
+                      {audioUrl ? 
+                        `${formatTime(currentTime)} / ${formatTime(duration)}` :
+                        `${Math.floor(progress / 100 * 60)}:${String(Math.floor((progress / 100 * 60) % 60)).padStart(2, '0')}`
+                      }
                     </div>
                   </div>
                   
-                  <div className="w-full bg-gray-700 rounded-full h-1.5 overflow-hidden">
+                  <div className="w-full bg-gray-700 rounded-full h-1.5 overflow-hidden cursor-pointer"
+                    onClick={(e) => {
+                      if (audioRef.current && duration > 0) {
+                        const rect = e.currentTarget.getBoundingClientRect();
+                        const percent = (e.clientX - rect.left) / rect.width;
+                        const newTime = percent * duration;
+                        audioRef.current.currentTime = newTime;
+                      }
+                    }}
+                  >
                     <motion.div 
                       className="h-full bg-blue-500"
                       style={{ width: `${progress}%` }}
@@ -121,11 +201,12 @@ export function RoomPlayer({
                 {listeners} listening
               </div>
               <div className="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-sm">
-                Live
+                {audioUrl ? "Podcast" : "Live"}
               </div>
             </div>
             
             <p className="text-gray-300">
+              {/* Add description field to your Podcast model if you want to display it here */}
               Join this exciting conversation about the future of web3 and how creators can monetize their content through blockchain technology.
             </p>
           </div>

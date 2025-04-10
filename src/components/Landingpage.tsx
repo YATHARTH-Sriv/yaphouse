@@ -2,13 +2,13 @@
 
 import React, { useEffect } from 'react';
 // import Mascot from '@/components/Mascot';
-import { Cardswithdetails } from '@/components/Cards';
+import { Cardswithdetails } from '@/components/landingpage-components/Cards';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-import { AccordionDemo } from './Accordian';
-import { SocialBubbleLeft, SocialBubbleRight } from './Socialbubble';
+import { AccordionDemo } from './landingpage-components/Accordian';
+import { SocialBubbleLeft, SocialBubbleRight } from './landingpage-components/Socialbubble';
 import Link from 'next/link';
 import { FaTwitter, FaGithub } from 'react-icons/fa';
-import InfoSection from './Infosection';
+import InfoSection from './landingpage-components/Infosection';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { useRouter } from 'next/navigation';
 

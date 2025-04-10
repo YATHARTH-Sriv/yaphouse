@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Toaster } from "@/components/ui/sonner"
 
 import "./globals.css";
 import { SolanaProvider } from "./Solanaprovider";
@@ -32,6 +33,7 @@ export default function RootLayout({
         <SolanaProvider>
           {children}
         </SolanaProvider>
+        <Toaster />
       </body>
     </html>
   );

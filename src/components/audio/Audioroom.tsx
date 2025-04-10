@@ -2,11 +2,10 @@
 
 import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { AnimatedBackground } from '@/components/Animated-background';
-import { RoomCard } from './Roomcard';
-import { RoomPlayer } from './Roomplayer';
+import { RoomCard } from '../room/Roomcard';
+import { RoomPlayer } from '../room/Roomplayer';
 
-// Mock data for audio rooms
+
 const mockRooms = [
   {
     id: '1',
